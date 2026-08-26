@@ -104,124 +104,216 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
 
-```sql
--- Paste your SQL code below for Question 1
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
+
+```
+CREATE TABLE ProjectAssignments (
+      AssignmentID INTEGER PRIMARY KEY, 
+      EmployeeID INTEGER, 
+      ProjectID INTEGER, 
+      AssignmentDate DATE NOT NULL, 
+      FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID), 
+      FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1233" height="368" alt="image" src="https://github.com/user-attachments/assets/a1623c30-9dd1-478f-8a5c-feab3f3c215d" />
+
 
 **Question 2**
----
--- Paste Question 2 here
 
-```sql
--- Paste your SQL code below for Question 2
+Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
+
+```
+INSERT INTO Employee (EmployeeID, Name, Department, Salary)
+SELECT EmployeeID, Name, Department, Salary
+FROM Former_employees;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1217" height="356" alt="image" src="https://github.com/user-attachments/assets/17e75ec0-4bd0-4574-b9f9-dd740607f71c" />
+
 
 **Question 3**
----
--- Paste Question 3 here
 
-```sql
--- Paste your SQL code below for Question 3
+Write a SQL query to modify the Student_details table by adding a new column Email of type VARCHAR(50) and updating the column MARKS to have a default value of 0.
+
+```
+ALTER TABLE Student_details 
+ADD Column Email VARCHAR(50);
+
+ALTER TABLE Student_details
+ADD COLUMN MARKS INTEGER DEFAULT 0;
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1231" height="325" alt="image" src="https://github.com/user-attachments/assets/cffc0aec-0cbd-42b0-b3f0-335a43d3f391" />
+
 
 **Question 4**
----
--- Paste Question 4 here
 
-```sql
--- Paste your SQL code below for Question 4
+Insert a customer with CustomerID 301, Name Michael Jordan, Address 123 Maple St, City Chicago, and ZipCode 60616 into the Customers table.
+
+```
+INSERT INTO Customers (CustomerID, Name, Address, City, ZipCode)
+VALUES (301, 'Michael Jordan', '123 Maple St', 'Chicago' , 60616);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1197" height="316" alt="image" src="https://github.com/user-attachments/assets/d06126c0-85c2-43d0-9a78-28a0d31b4276" />
+
 
 **Question 5**
----
--- Paste Question 5 here
 
-```sql
--- Paste your SQL code below for Question 5
+Write an SQL query to add two new columns, department_id and manager_id, to the table employee with datatype of INTEGER. The manager_id column should have a default value of NULL.
+
+```
+ALTER TABLE employee
+ADD COLUMN department_id INTEGER;
+
+ALTER TABLE employee
+ADD COLUMN manager_id INTEGER DEFAULT NULL;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1236" height="392" alt="image" src="https://github.com/user-attachments/assets/488be966-49fb-40f1-94ea-a36a731d0266" />
+
 
 **Question 6**
----
--- Paste Question 6 here
 
-```sql
--- Paste your SQL code below for Question 6
+Create a table named Reviews with the following columns:
+
+ReviewID as INTEGER
+ProductID as INTEGER
+Rating as REAL
+ReviewText as TEXT
+
+```
+CREATE TABLE Reviews (
+     ReviewID INTEGER, 
+     ProductID INTEGER, 
+     Rating REAL, 
+     ReviewText TEXT
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1226" height="497" alt="image" src="https://github.com/user-attachments/assets/d32ca600-e09e-43d9-bf03-21453762deed" />
+
 
 **Question 7**
----
--- Paste Question 7 here
 
-```sql
--- Paste your SQL code below for Question 7
+Insert the following employees into the Employee table:
+
+EmployeeID  Name        Position    Department  Salary
+----------  ----------  ----------  ----------  ----------
+2           John Smith  Developer   IT          75000
+3           Anna Bell   Designer    Marketing   68000
+
+```
+INSERT INTO Employee (EmployeeID, Name, Position, Department, Salary)
+VALUES
+(2, 'John Smith' , 'Developer', 'IT', 75000),
+(3, 'Anna Bell' , 'Designer', 'Marketing', 68000);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1198" height="432" alt="image" src="https://github.com/user-attachments/assets/0a53dcaa-47c9-4d7f-901f-80f1db43f79e" />
+
 
 **Question 8**
----
--- Paste Question 8 here
 
-```sql
--- Paste your SQL code below for Question 8
+Create a new table named products with the following specifications:
+product_id as INTEGER and primary key.
+product_name as TEXT and not NULL.
+list_price as DECIMAL (10, 2) and not NULL.
+discount as DECIMAL (10, 2) with a default value of 0 and not NULL.
+A CHECK constraint at the table level to ensure:
+list_price is greater than or equal to discount
+discount is greater than or equal to 0
+list_price is greater than or equal to 0
+
+```
+CREATE TABLE products (
+      product_id INTEGER PRIMARY KEY, 
+      product_name TEXT NOT NULL, 
+      list_price DECIMAL(10,2) NOT NULL, 
+      discount DECIMAL(10,2) NOT NULL DEFAULT 0, 
+      CHECK (
+           list_price >= discount
+           AND discount >= 0
+           AND list_price >= 0
+      )
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1222" height="377" alt="image" src="https://github.com/user-attachments/assets/d03b9816-30d9-4807-9a6d-cbf60d0cef21" />
+
 
 **Question 9**
----
--- Paste Question 9 here
 
-```sql
--- Paste your SQL code below for Question 9
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
+
+```
+CREATE TABLE Orders (
+     OrderID INTEGER PRIMARY KEY, 
+     OrderDate DATE NOT NULL, 
+     CustomerID INTEGER, 
+     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1217" height="360" alt="image" src="https://github.com/user-attachments/assets/d86d450f-403c-4c09-80e4-b9ccdc4185ef" />
+
 
 **Question 10**
----
--- Paste Question 10 here
 
-```sql
--- Paste your SQL code below for Question 10
+Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
+
+```
+CREATE TABLE Invoices (
+      InvoiceID INTEGER PRIMARY KEY, 
+      InvoiceDate DATE, 
+      DueDate DATE, 
+      Amount REAL, 
+      CHECK (DueDate > InvoiceDate), 
+      CHECK (Amount > 0)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1235" height="375" alt="image" src="https://github.com/user-attachments/assets/9e793c18-d598-4244-891f-74baf02d1733" />
+
 
 
 ## RESULT
